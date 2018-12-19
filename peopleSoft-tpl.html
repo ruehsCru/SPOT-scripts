@@ -1,0 +1,9 @@
+<h1>{{psFunc.title}}</h1>
+<p>{{psFunc.description}}</p>
+<div class="md-padding">
+  <form name="psForm" class="ps-tools">
+    <md-datepicker class="start-date" ng-model="query.startDate" md-placeholder="Start Date" ng-required="true"></md-datepicker>
+    <md-datepicker class="end-date" ng-model="query.endDate" md-placeholder="End Date" ng-required="true"></md-datepicker>
+  </form>
+  <md-button md-theme="psTheme" class="md-raised md-primary" ng-disabled="psForm.$invalid" ng-click="runFunction(psFunc.func)">Run Function</md-button>
+</div>
