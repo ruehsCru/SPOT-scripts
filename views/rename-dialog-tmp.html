@@ -1,0 +1,13 @@
+<md-dialog aria-label="Rename dialog">
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <p>Please give your new SPOT a great name.</p>
+      <form id="spotTitleForm" name="spotTitleForm">
+        <input name="spotTitle" type="text" required ng-model="spotTitle">
+      </form>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions">
+    <md-button ng-disabled="spotTitleForm.$invalid" ng-click="saveDialog()" class="md-primary">Save</md-button>
+  </div>
+</md-dialog>
