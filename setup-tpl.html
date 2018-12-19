@@ -1,0 +1,124 @@
+<md-sidenav md-theme="setupTheme" class="setupSidebar md-sidenav-right" md-component-id="setup">
+   <md-toolbar layout class="md-theme-light">
+     <h1 class="md-toolbar-tools">SPOT Settings</h1>
+     <md-icon aria-label="clear" class="material-icons close" ng-click="close()">clear</md-icon>
+   </md-toolbar>
+   <md-tabs md-border-bottom md-selected="selectedIndex">
+     <md-tab label="Your Info">
+       <md-content class="md-padding" layout-padding layout-margin>
+         <p>Please give us your information.</p>
+         <form id="staffForm" name="staffForm" ng-submit="saveStaffInfo(staffInfo)">
+           <md-input-container>
+             <label>Full Name</label>
+             <input name="name" required type="text" id="staffName" ng-model="staffInfo.name" md-sidenav-focus>
+             <div ng-messages="staffForm.name.$error" ng-show="staffForm.$invalid && staffForm.name.$touched">
+               <div ng-message="required">Please enter your name.</div>
+             </div>
+           </md-input-container>
+           <md-input-container>
+             <label>Ministry</label>
+             <input name="ministry" required type="text" id="staffMinistry" ng-model="staffInfo.ministry">
+             <div ng-messages="staffForm.ministry.$error" ng-show="staffForm.$invalid && staffForm.ministry.$touched">
+               <div ng-message="required">Enter your ministry. eg. "Campus"</div>
+             </div>
+           </md-input-container>
+           <md-input-container>
+             <label>Email</label>
+             <input name="email" required type="email" id="staffEmail" ng-model="staffInfo.email">
+             <div ng-messages="staffForm.email.$error" ng-show="staffForm.$invalid && staffForm.email.$touched">
+               <div ng-message="required">Please enter your email.</div>
+             </div>
+           </md-input-container>
+           <md-input-container>
+             <label>Address</label>
+             <input name="address" required type="text" id="staffAddress" ng-model="staffInfo.address.street">
+             <div ng-messages="staffForm.address.$error" ng-show="staffForm.$invalid && staffForm.address.$touched">
+               <div ng-message="required">Please enter your address.</div>
+             </div>
+           </md-input-container>
+           <md-input-container>
+             <label>City, State, Zip</label>
+             <input name="zip" required type="text" id="staffCity" ng-model="staffInfo.address.cityStateZip">
+             <div ng-messages="staffForm.zip.$error" ng-show="staffForm.$invalid && staffForm.zip.$touched">
+               <div ng-message="required">Please enter your city state and zipcode.</div>
+             </div>
+           </md-input-container>
+           <md-input-container>
+             <label>Phone</label>
+             <input name="phone" required type="text" id="staffPhone" ng-model="staffInfo.phone">
+             <div ng-messages="staffForm.phone.$error" ng-show="staffForm.$invalid && staffForm.phone.$touched">
+               <div ng-message="required">Please enter your phone number.</div>
+             </div>
+           </md-input-container>
+           <md-input-container>
+             <label>Staff Account #</label>
+             <input name="account" required ng-minlength="7" id="staffAcct" ng-model="staffInfo.account">
+             <div ng-messages="staffForm.account.$error" ng-show="staffForm.$invalid && staffForm.account.$touched">
+               <div ng-message="required">Please enter your staff account number.</div>
+               <div ng-message="minlength">Please enter your full staff account number.</div>
+             </div>
+           </md-input-container>
+           <div class="save-info row" layout="row" layout-sm="column" layout-align="center center" ng-show="saveInfo">
+             <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
+           </div>
+           <md-button type="submit" ng-disabled="staffForm.$invalid" class="md-primary md-raised">Save Staff Info</md-button>
+         </form>
+       </md-content>
+     </md-tab>
+     <md-tab label="Summer Mission">
+       <md-content class="md-padding" layout-padding layout-margin>
+         <p>Information for your Summer Mission.</p>
+         <form id="smSetup" name="smSetup" ng-submit="confirmBudget(summerMission)">
+           <md-select required placeholder="Budget Version" ng-model="summerMission.budget">
+             <md-option ng-repeat="budget in budgetOpt" value="{{budget.name}}">{{budget.name}}</md-option>
+           </md-select>
+           <md-input-container>
+             <label>Summer Mission Name</label>
+             <input required name="smName" type="text" id="smName" ng-model="summerMission.name">
+             <div ng-messages="smSetup.smName.$error" ng-show="smSetup.$invalid && smSetup.smName.$touched">
+               <div ng-message="required">Please enter your summer mission title.</div>
+             </div>
+           </md-input-container>
+           <div class="smDates">
+             <h5>Summer Mission Dates</h5>
+             <md-datepicker id="smStartDate" ng-model="summerMission.startDate" md-placeholder="SM Begin Date"></md-datepicker>
+             <md-datepicker id="smEndDate" ng-model="summerMission.endDate" md-placeholder="SM End Date"></md-datepicker>
+           </div>
+           <md-input-container>
+             <label>Business Unit</label>
+             <input type="text" required id="busUnit" name="busUnit" ng-model="summerMission.chartfield.businessUnit">
+             <div ng-messages="smSetup.busUnit.$error" ng-show="smSetup.$invalid && smSetup.busUnit.$touched">
+               <div ng-message="required">Please enter your chartfield business unit.</div>
+             </div>
+           </md-input-container>
+           <md-input-container>
+             <label>Operating Unit</label>
+             <input type="text" required name="opUnit" id="opUnit" ng-model="summerMission.chartfield.operatingUnit">
+             <div ng-messages="smSetup.opUnit.$error" ng-show="smSetup.$invalid && smSetup.opUnit.$touched">
+               <div ng-message="required">Please enter your chartfield operating unit.</div>
+             </div>
+           </md-input-container>
+           <md-input-container>
+             <label>Department ID</label>
+             <input type="text" required name="deptID" id="deptID" ng-model="summerMission.chartfield.deptID">
+             <div ng-messages="smSetup.deptID.$error" ng-show="smSetup.$invalid && smSetup.deptID.$touched">
+               <div ng-message="required">Please enter your chartfield department id.</div>
+             </div>
+           </md-input-container>
+           <md-input-container style="width:80%">
+             <label>Operating Account Designation #</label>
+             <input ng-model="summerMission.designationNumbers.opAccount" disabled>
+           </md-input-container>
+           <md-input-container style="width:80%">
+             <label>Scholarship Account Designation #</label>
+             <input ng-model="summerMission.designationNumbers.scholarshipAccount" disabled>
+           </md-input-container>
+           <div class="save-info row" layout="row" layout-sm="column" layout-align="center center" ng-show="saveInfo">
+             <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
+           </div>
+           <md-button type="submit" ng-disabled="smSetup.$invalid" class="md-primary md-raised">Save Summer Mission Info</md-button>
+         </form>
+       </md-content>
+     </md-tab>
+   </md-tabs>
+ </md-sidenav>
