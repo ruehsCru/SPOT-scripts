@@ -1,0 +1,64 @@
+<h1>{{currentFunc.title}}</h1>
+<p>{{currentFunc.desc}}</p>
+<p class="breaknline" ng-hide="funcContent">{{budgetContent}}</p>
+<div ng-show="funcContent">
+  <md-content class="md-padding" layout-padding layout-margin>
+    <form name="budgetForm" ng-show="InsertLine">
+      <md-input-container flex class="numberLines">
+        <input name="number" required type="number" placeholder="# of Lines to add" ng-model="numberOfLines" min="1">
+        <div ng-messages="budgetForm.number.$error" ng-show="budgetForm.$invalid && budgetForm.number.$touched">
+          <div ng-message="required">You need to let us know how many rows you would like to add.</div>
+          <div ng-message="min">Please pick a number greater than or equal to 1.</div>
+        </div>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-disabled="budgetForm.$invalid" ng-click="runFunction(currentFunc.title)">Run Function</md-button>
+    </form>
+    <form class="advanceForm md-padding" name="advance_form" ng-show="advanceForm">
+      <md-input-container flex class="advancePurpose">
+        <input name="purpose" required type="text" placeholder="Purpose of your Advance" ng-model="advance.purpose">
+        <div ng-messages="advance_form.purpose.$error" ng-show="advance_form.$invalid && advance_form.purpose.$touched">
+          <div ng-message="required">You need to enter a purpose in order to clear your advance.</div>
+        </div>
+      </md-input-container>
+      <md-input-container flex class="advanceAmount">
+        <input name="amount" required type="number" placeholder="Net Advance Amount" ng-model="advance.amount">
+        <div ng-messages="advance_form.amount.$error" ng-show="advance_form.$invalid && advance_form.amount.$touched">
+          <div ng-message="required">Please enter an amount to clear your advance.</div>
+        </div>
+      </md-input-container>
+    <md-button class="md-raised md-primary" ng-disabled="advance_form.$invalid" ng-click="runFunction(currentFunc.title)">Run Function</md-button>
+    </form>
+    <md-button class="md-raised md-primary" ng-hide="InsertLine || advanceForm" ng-click="runFunction(currentFunc.title)">Run Function</md-button>
+    <div ng-show="breakEvenFunc && breakEven != null">
+      <md-input-container>
+        <label># of Students to Break Even</label>
+        <input ng-model="breakEven" disabled>
+      </md-input-container>
+    </div>
+  </md-content>
+</div>
+<div class="budgetFab lock-size">
+  <md-fab-speed-dial class="fabSd" md-open="setup.isOpen" ng-mouseenter="setup.isOpen=true" ng-mouseleave="setup.isOpen=false" md-direction="{{setup.selectedDirection}}" ng-class="setup.selectedMode">
+    <md-fab-trigger>
+      <md-button ng-click="toggleRight()" md-theme="setupTheme" aria-label="menu" class="md-fab md-hue-2">
+        <md-tooltip md-direction="left">SPOT Settings</md-tooltip>
+        <md-icon ng-style="{color: icons.settings.color}" aria-label="{{ icons.settings.name }}" class="material-icons settings md-36">{{ icons.settings.name }}</md-icon>
+      </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+      <md-button aria-label="minimize header" class="md-fab md-raised md-mini" ng-click="toggleBudget('budgetHdr')">
+        <md-tooltip md-direction="left">show/hide green header</md-tooltip>
+        <md-icon ng-style="{color: icons.hideHdr.color}" aria-label="{{ icons.hideHdr.name }}" class="material-icons md-36">{{ icons.hideHdr.name }}</md-icon>
+      </md-button>
+      <md-button aria-label="minimize payment columns" class="md-fab md-raised md-mini" ng-click="toggleBudget('payCol')">
+        <md-tooltip md-direction="left">show/hide red columns</md-tooltip>
+        <md-icon ng-style="{color: icons.hideCol.color}" aria-label="{{ icons.hideCol.name }}" class="material-icons md-36">{{ icons.hideCol.name }}</md-icon>
+      </md-button>
+      <md-button aria-label="show Accepted Students Sheet" class="md-fab md-raised md-mini" ng-click="showHideSheet('Accepted Students')">
+        <md-tooltip md-direction="left">show/hide Accepted Students</md-tooltip>
+        <md-icon ng-style="{color: icons.students.color}" aria-label="{{ icons.students.name }}" class="material-icons md-36">{{ icons.students.name }}</md-icon>
+      </md-button>
+    </md-fab-actions>
+  </md-fab-speed-dial>
+</div>
+<div compile="setup.sidebar"></div>
