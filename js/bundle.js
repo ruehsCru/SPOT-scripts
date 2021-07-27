@@ -386,7 +386,7 @@
               },
               link: link,
               templateUrl: $sce.trustAsResourceUrl(
-                "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@latest/views/budget-tpl.html"
+                "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@master/views/budget-tpl.html"
               ),
             };
           },
@@ -495,7 +495,7 @@
               scope: { currentFunc: "=currentFunction", run: "&" },
               link: link,
               templateUrl: $sce.trustAsResourceUrl(
-                "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@latest/views/other-tpl.html"
+                "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@master/views/other-tpl.html"
               ),
             };
           },
@@ -538,7 +538,7 @@
               scope: { currentFunc: "=currentFunction", run: "&" },
               link: link,
               templateUrl: $sce.trustAsResourceUrl(
-                "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@latest/views/peopleSoft-tpl.html"
+                "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@master/views/peopleSoft-tpl.html"
               ),
             };
           },
@@ -588,7 +588,7 @@
                   .cancel("Change it.");
                 var loading = {
                   templateUrl: $sce.trustAsResourceUrl(
-                    "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@latest/views/build-dialog-tpl.html"
+                    "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@master/views/build-dialog-tpl.html"
                   ),
                   parent: angular.element(document.body),
                 };
@@ -654,7 +654,7 @@
                     parent: parentEl,
                     targetEvent: $event,
                     templateUrl: $sce.trustAsResourceUrl(
-                      "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@latest/views/rename-dialog-tpl.html"
+                      "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@master/views/rename-dialog-tpl.html"
                     ),
                     locals: { spotTitle: scope.spotTitle },
                     controller: SaveController,
@@ -687,7 +687,7 @@
               restrict: "E",
               link: link,
               templateUrl: $sce.trustAsResourceUrl(
-                "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@latest/views/setup-tpl.html"
+                "https://cdn.jsdelivr.net/gh/ruehsCru/SPOT-scripts@master/views/setup-tpl.html"
               ),
             };
           },
