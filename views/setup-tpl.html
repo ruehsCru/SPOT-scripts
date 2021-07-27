@@ -67,7 +67,7 @@
      </md-tab>
      <md-tab label="Summer Mission">
        <md-content class="md-padding" layout-padding layout-margin>
-         <p>Information for your Summer Mission.</p>
+         <p>Information for your Summer Mission:</p>
          <form id="smSetup" name="smSetup" ng-submit="confirmBudget(summerMission)">
            <md-select required placeholder="Budget Version" ng-model="summerMission.budget">
              <md-option ng-repeat="budget in budgetOpt" value="{{budget.name}}">{{budget.name}}</md-option>
