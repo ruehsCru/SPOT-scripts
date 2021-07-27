@@ -105,6 +105,12 @@
                <div ng-message="required">Please enter your chartfield department id.</div>
              </div>
            </md-input-container>
+           <md-input-container>
+             <label>Project ID (optional)</label>
+             <input type="text" required name="projectID" id="projectID" ng-model="summerMission.chartfield.projectID">
+             </div>
+           </md-input-container>
+            
            <md-input-container style="width:80%">
              <label>Operating Account Designation #</label>
              <input ng-model="summerMission.designationNumbers.opAccount" disabled>
